@@ -1,0 +1,40 @@
+html,body {
+    padding: 0;
+    margin: 0;
+}
+.drag-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 500px;
+    height: 500px;
+    margin-left: -250px;
+    margin-top: -250px;
+    background-color: aqua;
+}
+.drag-container .drag-circle {
+    position: absolute;
+    top: 0;
+    width: 180px;
+    height: 180px;
+    background: url('../images/circle.png') no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.drag-container .handle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background: url('../images/handle.png') no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.drag-container .vertical-line {
+    position: absolute;
+    left: 80px;
+    width: 20px;
+    height: 500px;
+    background-color: bisque;
+}
