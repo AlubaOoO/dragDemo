@@ -17,8 +17,11 @@ html,body {
     top: 0;
     width: 180px;
     height: 180px;
-    background: url('../images/circle.png') no-repeat;
-    background-size: contain;
+    border: 1px solid #b2ddfc;
+    border-radius: 50%;
+    background-color: #fff;
+    /*background: url('../images/circle.png') no-repeat;*/
+    /*background-size: contain;*/
     cursor: pointer;
 }
 .drag-container .handle {
@@ -37,4 +40,19 @@ html,body {
     width: 20px;
     height: 500px;
     background-color: bisque;
+}
+.drag-container .light {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 21px;
+    height: 21px;
+    background: url("../images/light.png") no-repeat;
+}
+.drag-container .slider-container {
+    position: absolute;
+    left: 200px;
+}
+.drag-container .slider-container #rotation_result {
+    width: 50px;
 }

@@ -6,14 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Drag Demo</title>
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/bootstrap-slider.css">
 </head>
 <body>
     <div class="drag-container" id="drag_container">
         <div class="vertical-line"></div>
         <div class="drag-circle" id="drag_circle">
             <div class="handle" id="handle"></div>
+            <div class="light" id="light"></div>
+        </div>
+        <div class="slider-container">
+            <span>角度：</span>
+            <input type="text" id="rotation_result">
+            <input id="rotation" type="text">
         </div>
     </div>
 </body>
+<script src="plug/jquery-1.11.3.min.js"></script>
+<script src="plug/bootstrap-slider.min.js"></script>
 <script src="./js/index.js"></script>
 </html>

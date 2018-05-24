@@ -20,17 +20,21 @@
             var dx = x - ox;
             var dy = y - oy;
             var angle = Math.atan(dy / dx);
-            var flag = 1;
             if(dx < 0) angle += PI;
             if(dx > 0 && dy < 0) angle += 2 * PI;
             console.log(parseInt(angle / 2 / PI * 360) + '°');
-            handle.style.left = ORING + R * Math.cos(angle) * flag - RH + 'px';
-            handle.style.top = ORING + R * Math.sin(angle) * flag - RH + 'px';
-        }
+            handle.style.left = ORING + R * Math.cos(angle) - RH + 'px';
+            handle.style.top = ORING + R * Math.sin(angle) - RH + 'px';
+            var rotation = angle / PI / 2 * 360;
+            light.style.transform = 'rotate(' + rotation + 'deg)';
+            if(rotation < 180) rotation = -rotation;
+            if(rotation >= 180) rotation = 360 - rotation;
+            $('#rotation').slider('setValue', rotation);
+        };
         dragContainer.onmouseup = function() {
             dragContainer.onmousemove = null;
         }
-    }
+    };
     var maxY = 500 - 2 * ORING;
     dragCircle.onmousedown = function(ev) {
         var preY = ev.clientY;
@@ -48,5 +52,34 @@
             dragCircle.onmouseup = null;
         }
 
-    }
+    };
+    var light = document.getElementById('light');
+    light.style.left = ORING - 10 + 'px';
+    light.style.top = ORING - 10 + 'px';
+    $('#rotation').slider({
+        min: -179,
+        max: 180,
+        value: 0,
+        tooltip: 'hide',
+        formatter: function (value) {
+            $('#rotation_result').val(value);
+        }
+    }).on('slide', function (slideEvt) {
+        var value = $(this)[0].value * -1;
+        console.log(value);
+        light.style.transform = 'rotate(' + value + 'deg)';
+        var angle = value;
+        if(angle < 0) angle += 360;
+        angle = angle / 360 * 2 *   PI;
+        console.log('===========', angle);
+        handle.style.left = ORING + R * Math.cos(angle) - RH + 'px';
+        handle.style.top = ORING + R * Math.sin(angle) - RH + 'px';
+    });
+    $('#rotation_result').keyup(function (e) {
+        if(e.keyCode === 13) {
+            $('#rotation').slider('setValue', $(this).val(), true);
+            $(this).blur();
+        }
+
+    })
 })();
